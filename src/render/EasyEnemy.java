@@ -11,15 +11,14 @@ public class EasyEnemy extends Enemy{
 	
 	LoadTextures lt = new LoadTextures();
 	
+	// Checks the walls
 	List<Walls> wallList;
 	
-	// 1 = up 2 = right 3 = down 4 = left 5 = destroy player
-	
-	int cool;
-	
+	// Positions of the enemy
 	int x;
 	int y;
 	
+	// Which way it is facing, and how fast
 	boolean facingR;
 	boolean facingL;
 	boolean facingU;
@@ -27,18 +26,17 @@ public class EasyEnemy extends Enemy{
 	int hspeed = 2;
 	int vspeed = 2;
 	
+	// New map positions
 	int nmx;
-	int nmy; // New map y
+	int nmy;
 	
+	// For the automated movement of the enemy
 	int[] distances = {};
 	char[] directions = {};
 	int counter = 0;
 	int maxCounter;
 	int dtg; // Distance to go
 	int dg; // Distance gone
-	
-	float urad;
-	float urad2;
 	
 	public EasyEnemy(int x, int y, int[] distances, char[] directions) {
 		this.x = x;
@@ -68,16 +66,19 @@ public class EasyEnemy extends Enemy{
 
 	boolean witw = false; //wall in the way
 	boolean ft = false; // Found target
-	int tx;
-	int ty;
-	int cx;
-	int cy;
-	boolean reseted = true;
+	int tx; // Target position
+	int ty; // Target position
+	int[] cx; // Current x
+	int[] cy; // Current y
+	int counter2; // Second counter
+	boolean reseted = true; // Is the player where it should be
 
 	@Override
 	public void observe(int px, int py) {
 		witw = false;
 		ft = false;
+		cx[0] = x;
+		cy[0] = y;
 		if(facingU) {
 			for(Walls e : wallList) {
 				if(e.getY() + nmy > py && e.getY() + nmy < y + nmy && e.getX() + e.getWidth() + nmx > x + nmx && e.getX() + nmx < x + nmx + 100) {
@@ -90,10 +91,11 @@ public class EasyEnemy extends Enemy{
 					System.out.println("FOUND TARGET");
 					ft = true;
 					if(reseted == true) {
-						cx = x;
-						cy = y;
 						reseted = false;
 					}
+					cx[cx.length] = x;
+					cy[cy.length] = y;
+					counter = cx.length;
 					reseted = false;
 					tx = px;
 					ty = py;
@@ -112,10 +114,11 @@ public class EasyEnemy extends Enemy{
 					System.out.println("FOUND TARGET");
 					ft = true;
 					if(reseted == true) {
-						cx = x;
-						cy = y;
 						reseted = false;
 					}
+					cx[cx.length] = x;
+					cy[cy.length] = y;
+					counter = cx.length;
 					reseted = false;
 					tx = px;
 					ty = py;
@@ -134,10 +137,11 @@ public class EasyEnemy extends Enemy{
 					System.out.println("FOUND TARGET");
 					ft = true;
 					if(reseted == true) {
-						cx = x;
-						cy = y;
 						reseted = false;
 					}
+					cx[cx.length] = x;
+					cy[cy.length] = y;
+					counter = cx.length;
 					reseted = false;
 					tx = px;
 					ty = py;
@@ -161,17 +165,25 @@ public class EasyEnemy extends Enemy{
 			hspeed = 2;
 			vspeed = 2;
 			if(reseted != true) {
-				if(y < cy) {
+				if(y < cy[counter]) {
 					y += vspeed;
-				} else if (y > cy) {
+				} else if (y > cy[counter]) {
 					y -= vspeed;
+				}
+				if(x < cx[counter]) {
+					x += hspeed;
+				} else if (y > cx[counter]) {
+					x -= hspeed;
+				}
+				if(counter > 0) {
+					counter --;
 				}
 			} else {
 				movement();	
 			}
 		}
 		System.out.println("CY: " + cy + " Y: " + y);
-		if(y == cy) {
+		if(y == cy[0] && x == cx[0]) {
 			reseted = true;
 		}
 		
@@ -192,7 +204,7 @@ public class EasyEnemy extends Enemy{
 			GL11.glTexCoord2f(0,1);
 			GL11.glVertex2f(x+ nmx,y+100+ nmy);
 		GL11.glEnd();
-		observe(px,py);
+		movement();
 	}
 
 	@Override

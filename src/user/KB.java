@@ -8,6 +8,8 @@ public class KB {
 	boolean sdown; // Down key
 	boolean ddown; // Right key
 	boolean wdown; // Up key
+	boolean onedown; // 1 key
+	boolean escdown; // Escape key
 
 	public boolean isAdown() {
 		if(Keyboard.isKeyDown(Keyboard.KEY_A)) {
@@ -48,6 +50,24 @@ public class KB {
         	wdown = false;
         }
 		return wdown;
+	}
+	
+	public boolean is1Down() {
+		if(Keyboard.isKeyDown(Keyboard.KEY_1)) {
+			onedown = true;
+		} else {
+			onedown = false;
+		}
+		return onedown;
+	}
+	
+	public boolean isEscDown() {
+		if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
+			escdown = true;
+		} else {
+			escdown = false;
+		}
+		return escdown;
 	}
 	
 }

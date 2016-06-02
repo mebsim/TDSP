@@ -9,15 +9,19 @@ import user.KB;
 
 public class Player {
 
+	// players position
 	int px;
 	int py;
 	
+	//Map positions
 	int mx;
 	int my;
 	
+	// Map Size
 	int MapWidth;
 	int MapHeight;
 	
+	// Player textures for waking
 	Texture texture;
 	Texture sprite0;
 	Texture sprite1;
@@ -31,6 +35,7 @@ public class Player {
 	int hs = 5; // horizontal speed
 	int vs = 5; // vertical speed
 	
+	// The positions of each corner of the texture
 	float tx1 = 0;
 	float tx2 = 0;
 	float tx3 = 1;
@@ -40,24 +45,28 @@ public class Player {
 	float ty3 = 0;
 	float ty4 = 1;
 	
+	// Collisons booleans
 	boolean ncool = false;
 	boolean ecool = false;
 	boolean wcool = false;
 	boolean scool = false;
 	
+	// Is the  player dead
 	boolean living = true;
 	
+	// If the player is at the center of the screen
 	boolean centeredv;
 	boolean centeredh;
 	
-	float counter;
-	float countertu;
+	// Counters
+	float counter; // Counter for the textures
 	
+	// Allows access to the window maker, loading textures and keyboard
 	WindowMaker Display = new WindowMaker();
 	LoadTextures lt = new LoadTextures();
 	KB kb = new KB();
 	
-	public Player(int px, int py, int MapWidth, int MapHeight) {
+	public Player(int px, int py, int MapWidth, int MapHeight) { // Sets all the players variables
 		this.px = px;
 		this.py = py;
 		this.MapHeight = MapHeight;
@@ -107,6 +116,7 @@ public class Player {
 			//System.out.println("COUNTER: " + counter);
 			//System.out.println(countertu);
 			movement();
+			// Checks if it is centered
 			if(px >= Display.getWidth()/2 - 70 && px <= Display.getWidth()/2 - 60) {
 				centeredv = true;
 			} else {
@@ -120,6 +130,7 @@ public class Player {
 			if(counter > 7) {
 				counter = 0;
 			}
+			// Goes through all the textures
 			if(counter == 0) {
 				texture = sprite0;
 			} else if(counter == 1) {

@@ -36,15 +36,21 @@ public class Tutorial1 implements Levels {
 	public int x = 0;
 	public int y = 0;
 	
+	boolean pause = false;
+	
 	String state = "nothing";
 	
 	Texture MapTexture;
+	Texture Pause;
+	Texture doneLevel;
+	
 	LoadTextures lt = new LoadTextures();
 	
 	WindowMaker display = new WindowMaker();
 
 	public void getTexture() {
 		MapTexture = lt.getMap();
+		Pause = lt.getPause();
 	}
 
 	@Override
@@ -53,7 +59,6 @@ public class Tutorial1 implements Levels {
 		y = 0;
 		getTexture();
 		p = new Player(50, 200,MapTexture.getImageWidth(), MapTexture.getImageHeight());
-		// pa = new Plain(850, 1150, "Copyright Mohamed Ebsim 2016, Developmental 1", 12);
 		kb = new KB();
 		p.getTexture();
 		door = new EndDoor(855, 400, 670, 460);
@@ -173,6 +178,15 @@ public class Tutorial1 implements Levels {
 		if(door.isExited()) {
 			state = "titlescreen";
 		}
+		if(p.isLiving() == false) {
+			pause = true;
+			pauseMenu();
+		}
+		if(kb.isEscDown()) {
+			pause = true;
+			pauseMenu();
+		}
+		System.out.println(finalCool[3]);
 		p.setCollisions(finalCool);
 		updateLocation();
 		finalCool[0] = false;
@@ -206,5 +220,36 @@ public class Tutorial1 implements Levels {
 	public String getState() {
 		return state;
 	}
+	
+	public void resetLevel() {
+		x = 0;
+		y = 0;
+		p.setPX(50);
+		p.setPY(200);
+		p.setLiving(true);
+	}
 
+	public void pauseMenu() {
+		unbind();
+		while(pause) {
+			GL11.glBindTexture(GL11.GL_TEXTURE_2D, Pause.getTextureID());
+			GL11.glBegin(GL11.GL_QUADS);
+				GL11.glTexCoord2f(0,0);
+				GL11.glVertex2f(display.getWidth()/2-Pause.getImageWidth()/2,display.getHeight()/2-Pause.getImageHeight()/2);
+				GL11.glTexCoord2f(1,0);
+				GL11.glVertex2f(display.getWidth()/2-Pause.getImageWidth()/2+Pause.getImageWidth(),display.getHeight()/2-Pause.getImageHeight()/2);
+				GL11.glTexCoord2f(1,1);
+				GL11.glVertex2f(display.getWidth()/2-Pause.getImageWidth()/2+Pause.getImageWidth(),display.getHeight()/2-Pause.getImageHeight()/2+Pause.getImageHeight());
+				GL11.glTexCoord2f(0,1);
+				GL11.glVertex2f(display.getWidth()/2-Pause.getImageWidth()/2,display.getHeight()/2-Pause.getImageHeight()/2+Pause.getImageHeight());
+			GL11.glEnd();
+			display.update();
+			if(kb.is1Down() == true) {
+				// resetLevel();
+				pause = false;
+			}
+		}
+		unbind();
+	}
+	
 }

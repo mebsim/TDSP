@@ -124,6 +124,10 @@ public class Level1 implements Levels {
 		if(door.isExited()) {
 			state = "level2";
 		}
+
+		if(p.isLiving() == false) {
+			resetLevel();
+		}
 		p.setCollisions(finalCool);
 		updateLocation();
 		finalCool[0] = false;
@@ -149,6 +153,14 @@ public class Level1 implements Levels {
 	@Override
 	public String getState() {
 		return state;
+	}
+	
+	public void resetLevel() {
+		x = 0;
+		y = 0;
+		p.setPX(50);
+		p.setPY(200);
+		p.setLiving(true);
 	}
 
 }

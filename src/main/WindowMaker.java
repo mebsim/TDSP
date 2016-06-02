@@ -37,9 +37,9 @@ public class WindowMaker {
     public void prepare() {
     		// Enables alpha blending
 		GL11.glEnable(GL11.GL_BLEND);
-		GL11.glEnable(GL11.GL_TEXTURE_2D);
-    	GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GL11.glClearColor(1.0f, 1.0f, 1.0f, 0.0f);          
+		GL11.glEnable(GL11.GL_TEXTURE_2D); // allows textures
+    	GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA); // Allows Alpha
+		GL11.glClearColor(1.0f, 1.0f, 1.0f, 0.0f); // Clear screen color
         	
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 		GL11.glMatrixMode(GL11.GL_PROJECTION);

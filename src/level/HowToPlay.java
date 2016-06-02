@@ -15,6 +15,8 @@ public class HowToPlay implements Levels {
 	M mouse;
 	
 	Plain goBack;
+	Plain controls;
+	Plain instruct;
 	
 	int mx;
 	int my;
@@ -41,6 +43,8 @@ public class HowToPlay implements Levels {
 		kb = new KB();
 		mouse = new M();
 		goBack = new Plain(700,550,"BACK", 24);
+		controls = new Plain(275,350, "WASD -- Movement", 24);
+		instruct = new Plain(25,400, "GET THE KEY, OPEN DOOR, GO THROUGH DOOR, WIN LEVEL", 24);
 	}
 
 	@Override
@@ -71,9 +75,11 @@ public class HowToPlay implements Levels {
 			GL11.glVertex2f(x,y+600);
 		GL11.glEnd();
 		goBack.draw(cgb);
+		controls.draw(Color.white);
+		instruct.draw(Color.white);
 		checkHover();
 		checkClick();
-		System.out.println(mouse.getMx());
+		// System.out.println(mouse.getMx());
 	}
 	
 	public void checkHover() {

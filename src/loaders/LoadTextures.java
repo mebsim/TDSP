@@ -124,4 +124,9 @@ public class LoadTextures {
 		return ls;
 	}
 	
+	public Texture getPause() {
+		Texture p = getTexture("Pause");
+		return p;
+	}
+	
 }
