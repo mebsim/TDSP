@@ -106,4 +106,8 @@ public class EndDoor {
 		return exited;
 	}
 	
+	public void setKeyTaken(boolean notTaken) {
+		k.setnotTaken(notTaken);
+	}
+	
 }

@@ -77,4 +77,8 @@ public class EndKey {
 		return notTaken;
 	}
 	
+	public void setnotTaken(boolean notTaken) {
+		this.notTaken = notTaken;
+	}
+	
 }

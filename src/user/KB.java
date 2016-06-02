@@ -9,6 +9,7 @@ public class KB {
 	boolean ddown; // Right key
 	boolean wdown; // Up key
 	boolean onedown; // 1 key
+	boolean twodown;
 	boolean escdown; // Escape key
 
 	public boolean isAdown() {
@@ -68,6 +69,15 @@ public class KB {
 			escdown = false;
 		}
 		return escdown;
+	}
+	
+	public boolean is2Down() {
+		if(Keyboard.isKeyDown(Keyboard.KEY_2)) {
+			twodown = true;
+		} else {
+			twodown = false;
+		}
+		return twodown;
 	}
 	
 }

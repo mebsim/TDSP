@@ -17,6 +17,7 @@ public class HowToPlay implements Levels {
 	Plain goBack;
 	Plain controls;
 	Plain instruct;
+	Plain pause;
 	
 	int mx;
 	int my;
@@ -42,6 +43,7 @@ public class HowToPlay implements Levels {
 		getTexture();
 		kb = new KB();
 		mouse = new M();
+		pause = new Plain(275,300, "ESC - PAUSE GAME", 24);
 		goBack = new Plain(700,550,"BACK", 24);
 		controls = new Plain(275,350, "WASD -- Movement", 24);
 		instruct = new Plain(25,400, "GET THE KEY, OPEN DOOR, GO THROUGH DOOR, WIN LEVEL", 24);
@@ -77,6 +79,7 @@ public class HowToPlay implements Levels {
 		goBack.draw(cgb);
 		controls.draw(Color.white);
 		instruct.draw(Color.white);
+		pause.draw(Color.white);
 		checkHover();
 		checkClick();
 		// System.out.println(mouse.getMx());

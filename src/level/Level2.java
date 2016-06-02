@@ -35,15 +35,26 @@ public class Level2 implements Levels {
 	public int x = 0;
 	public int y = -425;
 	
+	boolean pause = false;
+	boolean fail = false;
+	boolean win = false;
+	
 	String state = "nothing";
 	
 	Texture MapTexture;
+	Texture Pause;
+	Texture loseLevel;
+	Texture doneLevel;
+	
 	LoadTextures lt = new LoadTextures();
 	
 	WindowMaker display = new WindowMaker();
 
 	public void getTexture() {
 		MapTexture = lt.getLevel2Map();
+		Pause = lt.getPause();
+		doneLevel = lt.getWin();
+		loseLevel = lt.getLose();
 	}
 
 	@Override
@@ -157,11 +168,16 @@ public class Level2 implements Levels {
 			}
 		}
 		if(door.isExited()) {
-			state = "tut1";
+			win = true;
+			winMenu();
 		}
-
 		if(p.isLiving() == false) {
-			resetLevel();
+			fail = true;
+			loseMenu();
+		}
+		if(kb.isEscDown()) {
+			pause = true;
+			pauseMenu();
 		}
 		p.setCollisions(finalCool);
 		updateLocation();
@@ -192,10 +208,88 @@ public class Level2 implements Levels {
 	
 	public void resetLevel() {
 		x = 0;
-		y = 0;
+		y = -425;
 		p.setPX(50);
-		p.setPY(200);
+		p.setPY(425);
 		p.setLiving(true);
+		door.setKeyTaken(true);
+	}
+
+	public void pauseMenu() {
+		unbind();
+		while(pause) {
+			GL11.glBindTexture(GL11.GL_TEXTURE_2D, Pause.getTextureID());
+			GL11.glBegin(GL11.GL_QUADS);
+				GL11.glTexCoord2f(0,0);
+				GL11.glVertex2f(display.getWidth()/2-Pause.getImageWidth()/2,display.getHeight()/2-Pause.getImageHeight()/2);
+				GL11.glTexCoord2f(1,0);
+				GL11.glVertex2f(display.getWidth()/2-Pause.getImageWidth()/2+Pause.getImageWidth(),display.getHeight()/2-Pause.getImageHeight()/2);
+				GL11.glTexCoord2f(1,1);
+				GL11.glVertex2f(display.getWidth()/2-Pause.getImageWidth()/2+Pause.getImageWidth(),display.getHeight()/2-Pause.getImageHeight()/2+Pause.getImageHeight());
+				GL11.glTexCoord2f(0,1);
+				GL11.glVertex2f(display.getWidth()/2-Pause.getImageWidth()/2,display.getHeight()/2-Pause.getImageHeight()/2+Pause.getImageHeight());
+			GL11.glEnd();
+			if(kb.is1Down() == true) {
+				pause = false;
+			} else if(kb.is2Down() == true) {
+				pause = false;
+				state = "titlescreen";
+			}
+			display.update();
+		}
+		unbind();
+	}
+	
+	public void loseMenu() {
+		unbind();
+		while(fail) {
+			GL11.glBindTexture(GL11.GL_TEXTURE_2D, loseLevel.getTextureID());
+			GL11.glBegin(GL11.GL_QUADS);
+				GL11.glTexCoord2f(0,0);
+				GL11.glVertex2f(display.getWidth()/2-loseLevel.getImageWidth()/2,display.getHeight()/2-loseLevel.getImageHeight()/2);
+				GL11.glTexCoord2f(1,0);
+				GL11.glVertex2f(display.getWidth()/2-loseLevel.getImageWidth()/2+loseLevel.getImageWidth(),display.getHeight()/2-loseLevel.getImageHeight()/2);
+				GL11.glTexCoord2f(1,1);
+				GL11.glVertex2f(display.getWidth()/2-loseLevel.getImageWidth()/2+loseLevel.getImageWidth(),display.getHeight()/2-loseLevel.getImageHeight()/2+loseLevel.getImageHeight());
+				GL11.glTexCoord2f(0,1);
+				GL11.glVertex2f(display.getWidth()/2-loseLevel.getImageWidth()/2,display.getHeight()/2-loseLevel.getImageHeight()/2+loseLevel.getImageHeight());
+			GL11.glEnd();
+			if(kb.is1Down() == true) {
+				fail = false;
+				resetLevel();
+			} else if(kb.is2Down() == true) {
+				fail = false;
+				state = "titlescreen";
+			}
+			display.update();
+		}
+		unbind();
+	}
+	
+	public void winMenu() {
+		unbind();
+		while(win) {
+			GL11.glBindTexture(GL11.GL_TEXTURE_2D, doneLevel.getTextureID());
+			GL11.glBegin(GL11.GL_QUADS);
+				GL11.glTexCoord2f(0,0);
+				GL11.glVertex2f(display.getWidth()/2-doneLevel.getImageWidth()/2,display.getHeight()/2-doneLevel.getImageHeight()/2);
+				GL11.glTexCoord2f(1,0);
+				GL11.glVertex2f(display.getWidth()/2-doneLevel.getImageWidth()/2+doneLevel.getImageWidth(),display.getHeight()/2-doneLevel.getImageHeight()/2);
+				GL11.glTexCoord2f(1,1);
+				GL11.glVertex2f(display.getWidth()/2-doneLevel.getImageWidth()/2+doneLevel.getImageWidth(),display.getHeight()/2-doneLevel.getImageHeight()/2+doneLevel.getImageHeight());
+				GL11.glTexCoord2f(0,1);
+				GL11.glVertex2f(display.getWidth()/2-doneLevel.getImageWidth()/2,display.getHeight()/2-doneLevel.getImageHeight()/2+doneLevel.getImageHeight());
+			GL11.glEnd();
+			if(kb.is1Down() == true) {
+				win = false;
+				state = "tut1";
+			} else if(kb.is2Down() == true) {
+				win = false;
+				state = "titlescreen";
+			}
+			display.update();
+		}
+		unbind();
 	}
 
 }

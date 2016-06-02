@@ -129,4 +129,34 @@ public class LoadTextures {
 		return p;
 	}
 	
+	public Texture getWin() {
+		Texture w = getTexture("Win");
+		return w;
+	}
+	
+	public Texture getLose() {
+		Texture l = getTexture("Lose");
+		return l;
+	}
+	
+	public Texture getMini1() {
+		Texture m1 = getTexture("mini1");
+		return m1;
+	}
+	
+	public Texture getMini2() {
+		Texture m2 = getTexture("mini2");
+		return m2;
+	}
+	
+	public Texture getMini3() {
+		Texture m3 = getTexture("mini3");
+		return m3;
+	}
+	
+	public Texture getRedot() {
+		Texture rd = getTexture("redot");
+		return rd;
+	}
+	
 }
