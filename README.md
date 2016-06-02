@@ -1,6 +1,7 @@
 # TDSP
 
-Stands for Top Down Stealth Puzzle
+Stands for Top Down Stealth Puzzle<br />
+Also called the 'Covert Exit'
 
 Made with LWJGL (another acronym (Light Weight Java Game Library))
 
