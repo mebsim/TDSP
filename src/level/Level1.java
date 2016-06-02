@@ -9,7 +9,7 @@ import org.newdawn.slick.opengl.Texture;
 import keys.EndDoor;
 import loaders.LoadTextures;
 import main.WindowMaker;
-//import map.Minimap;
+import map.Minimap;
 import player.Player;
 import user.KB;
 import wall.Walls;
@@ -29,7 +29,7 @@ public class Level1 implements Levels {
 	KB kb;
 	EndDoor door;
 	List<Walls> wallList = new ArrayList<Walls>();
-	//Minimap minimap;
+	Minimap minimap;
 	
 	public int x = 0;
 	public int y = 0;
@@ -61,14 +61,14 @@ public class Level1 implements Levels {
 	@Override
 	public void setUp() {
 		getTexture();
-		//minimap = new Minimap(MiniTexture);
+		minimap = new Minimap(MiniTexture);
 		x = 0;
 		y = 0;
 		getTexture();
 		p = new Player(50, 200,MapTexture.getImageWidth(), MapTexture.getImageHeight());
 		kb = new KB();
 		p.getTexture();
-		door = new EndDoor(500, 500, 30, 30);
+		door = new EndDoor(500, 500, 30, 920);
 		wallList.add(new Walls(0,0,32,MapTexture.getImageHeight()));
 		wallList.add(new Walls(0,MapTexture.getImageHeight()-32,MapTexture.getImageWidth(),32));
 		wallList.add(new Walls(0,0,MapTexture.getImageWidth(),32));
@@ -90,7 +90,7 @@ public class Level1 implements Levels {
 		p.destroy();
 		door.destroy();
 		wallList.clear();
-		//minimap.unbind();
+		minimap.unbind();
 	}
 
 	public void unbind() {
@@ -155,7 +155,7 @@ public class Level1 implements Levels {
 		finalCool[1] = false;
 		finalCool[2] = false;
 		finalCool[3] = false;
-		//minimap.draw(p.getPx(), p.getPy());
+		minimap.draw(p.getPx(), p.getPy(),x,y);
 	}
 
 	public void updateLocation() {

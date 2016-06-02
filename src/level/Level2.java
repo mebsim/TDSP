@@ -9,6 +9,7 @@ import org.newdawn.slick.opengl.Texture;
 import keys.EndDoor;
 import loaders.LoadTextures;
 import main.WindowMaker;
+import map.Minimap;
 import player.Player;
 import render.EasyEnemy;
 import render.GenEntity;
@@ -31,6 +32,7 @@ public class Level2 implements Levels {
 	EndDoor door;
 	List<GenEntity> renderList = new ArrayList<GenEntity>();
 	List<Walls> wallList = new ArrayList<Walls>();
+	Minimap minimap;
 	
 	public int x = 0;
 	public int y = -425;
@@ -45,6 +47,7 @@ public class Level2 implements Levels {
 	Texture Pause;
 	Texture loseLevel;
 	Texture doneLevel;
+	Texture MiniTexture;
 	
 	LoadTextures lt = new LoadTextures();
 	
@@ -55,6 +58,7 @@ public class Level2 implements Levels {
 		Pause = lt.getPause();
 		doneLevel = lt.getWin();
 		loseLevel = lt.getLose();
+		MiniTexture = lt.getMini2();
 	}
 
 	@Override
@@ -62,6 +66,7 @@ public class Level2 implements Levels {
 		x = 0;
 		y = -425;
 		getTexture();
+		minimap = new Minimap(MiniTexture);
 		p = new Player(50, 425,MapTexture.getImageWidth(), MapTexture.getImageHeight());
 		kb = new KB();
 		p.getTexture();
@@ -97,6 +102,7 @@ public class Level2 implements Levels {
 	@Override
 	public void destroy() {
 		unbind();
+		minimap.unbind();
 		for(GenEntity e : renderList) {
 			e.destroy();
 		}
@@ -185,6 +191,7 @@ public class Level2 implements Levels {
 		finalCool[1] = false;
 		finalCool[2] = false;
 		finalCool[3] = false;
+		minimap.draw(p.getPx(), p.getPy(), x, y);
 	}
 
 	public void updateLocation() {
