@@ -10,5 +10,5 @@ For the textures I used:
 
 - http://pyromancers.com/dungeon-painter-online/
 - www.piskelapp.com
-
-Along with hours of messing around, until I got bored and said that will do.
+- Along with other websites that can be found in the log.
+- Along with hours of messing around, until I got bored and said that will do.
