@@ -195,14 +195,13 @@ public class Level2 implements Levels {
 	}
 
 	public void updateLocation() {
-		if(p.isCenteredv() && kb.isDdown() && display.getWidth() <= x + MapTexture.getTextureWidth() && finalCool[3] == false) {
+		if(p.isCenteredv() && kb.isDdown() && !kb.isAdown() && !kb.isWdown() && !kb.isSdown() && display.getWidth() <= x + MapTexture.getTextureWidth() && finalCool[3] == false) {
 			x -= 5;
-		} else if (p.isCenteredv() && kb.isAdown() && x != 0 && finalCool[1] == false) {
+		} else if (p.isCenteredv() && kb.isAdown() && !kb.isDdown() && !kb.isWdown() && !kb.isSdown() && x != 0 && finalCool[1] == false) {
 			x += 5;
-		}
-		if(p.isCenteredh() && kb.isWdown() && y != 0 && finalCool[2] == false) {
+		} else if(p.isCenteredh() && kb.isWdown() && !kb.isAdown() && !kb.isDdown() && !kb.isSdown() && y != 0 && finalCool[2] == false) {
 			y += 5;
-		} else if (p.isCenteredh() && kb.isSdown() && display.getHeight() <= y + MapTexture.getTextureHeight() && finalCool[0] == false) {
+		} else if (p.isCenteredh() && kb.isSdown() && !kb.isAdown() && !kb.isDdown() && !kb.isWdown() && display.getHeight() <= y + MapTexture.getTextureHeight() && finalCool[0] == false) {
 			// System.out.println("THe Display Height is " + display.getHeight() + ". The MapTexture Image Height is " + MapTexture.getImageHeight() + ". The Y + Maptexture Image Height is " + (y + MapTexture.getImageHeight()) + ". The Y is " + y + ". The Player y is " + p.getPy());
 			y -= 5;
 		}
