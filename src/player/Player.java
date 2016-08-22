@@ -148,7 +148,7 @@ public class Player {
 			} else if (counter == 7) {
 				texture = sprite7;
 			}
-			if(kb.isAdown() && wcool == false) {
+			if(kb.isAdown() && !kb.isDdown() && !kb.isWdown() && !kb.isSdown() && wcool == false) {
 				tx1 = 1;
 				tx2 = 1;
 				tx3 = 0;
@@ -158,7 +158,7 @@ public class Player {
 				ty3 = 1;
 				ty4 = 0;
 				counter += 0.5;
-			} else if(kb.isDdown() && ecool == false) {
+			} else if(kb.isDdown() && !kb.isAdown() && !kb.isWdown() && !kb.isSdown() && ecool == false) {
 				tx1 = 0;
 				tx2 = 0;
 				tx3 = 1;
@@ -168,7 +168,7 @@ public class Player {
 				ty3 = 0;
 				ty4 = 1;
 				counter += 0.5;
-			} else if(kb.isWdown() && ncool == false) {
+			} else if(kb.isWdown() && !kb.isAdown() && !kb.isDdown() && !kb.isSdown() && ncool == false) {
 				tx1 = 0;
 				tx2 = 1;
 				tx3 = 1;
@@ -178,7 +178,7 @@ public class Player {
 				ty3 = 1;
 				ty4 = 1;
 				counter += 0.5;
-			} else if(kb.isSdown() && scool == false) {
+			} else if(kb.isSdown() && !kb.isAdown() && !kb.isDdown() && !kb.isWdown() && scool == false) {
 				tx1 = 1;
 				tx2 = 0;
 				tx3 = 0;
@@ -195,13 +195,13 @@ public class Player {
 	}
 	
 	public void movement() {
-		if(kb.isAdown() && wcool == false && (mx == 0 || (mx <= (Display.getWidth() - MapWidth) && px >= Display.getWidth()/2 - 64)) && px > 0) {
+		if(kb.isAdown() && !kb.isDdown() && !kb.isWdown() && !kb.isSdown() && wcool == false && (mx == 0 || (mx <= (Display.getWidth() - MapWidth) && px >= Display.getWidth()/2 - 64)) && px > 0) {
 			px -=hs;
-		} else if(kb.isDdown() && ecool == false && (mx <= (Display.getWidth() - MapWidth) || (mx == 0 && px <= Display.getWidth()/2 - 64)) && px < Display.getWidth() - 100) {
+		} else if(kb.isDdown() && !kb.isAdown() && !kb.isWdown() && !kb.isSdown() && ecool == false && (mx <= (Display.getWidth() - MapWidth) || (mx == 0 && px <= Display.getWidth()/2 - 64)) && px < Display.getWidth() - 100) {
 			px +=hs;
-		} else if(kb.isWdown() && ncool == false && (my == 0 || (my <= (Display.getHeight() - MapHeight) && py >= Display.getHeight()/2 - 64)) && py > 0) {
+		} else if(kb.isWdown() && !kb.isAdown() && !kb.isDdown() && !kb.isSdown() && ncool == false && (my == 0 || (my <= (Display.getHeight() - MapHeight) && py >= Display.getHeight()/2 - 64)) && py > 0) {
 			py -=vs;
-		} else if(kb.isSdown() && scool == false && (my <= (Display.getHeight() - MapHeight) || (my == 0 && py <= Display.getHeight()/2 - 64)) && py < Display.getHeight() - 90) {
+		} else if(kb.isSdown() && !kb.isAdown() && !kb.isDdown() && !kb.isWdown() && scool == false && (my <= (Display.getHeight() - MapHeight) || (my == 0 && py <= Display.getHeight()/2 - 64)) && py < Display.getHeight() - 90) {
 			py +=vs;
 		}
 		/*if(kb.isAdown() && px > 0) {
@@ -290,53 +290,4 @@ public class Player {
 	public void setLiving(boolean living) {
 		this.living = living;
 	}
-	
-	// Looking right 
-	/*
-	 * GL11.glTexCoord2f(0,1);
-				GL11.glVertex2f(px,py);
-				GL11.glTexCoord2f(0,0);
-				GL11.glVertex2f(px+100,py);
-				GL11.glTexCoord2f(1,0);
-				GL11.glVertex2f(px+100,py+100);
-				GL11.glTexCoord2f(1,1);
-				GL11.glVertex2f(px,py+100);
-	 */
-	
-	// Looking Left
-	/*
-	 * GL11.glTexCoord2f(1,0);
-				GL11.glVertex2f(px,py);
-				GL11.glTexCoord2f(1,1);
-				GL11.glVertex2f(px+100,py);
-				GL11.glTexCoord2f(0,1);
-				GL11.glVertex2f(px+100,py+100);
-				GL11.glTexCoord2f(0,0);
-				GL11.glVertex2f(px,py+100);
-	 */
-	
-	//Looking Down
-	/*
-	 * GL11.glBegin(GL11.GL_QUADS); // 0,0 x,y 1x x + widht 1y y + height // 
-				GL11.glTexCoord2f(1,1);
-				GL11.glVertex2f(px,py);
-				GL11.glTexCoord2f(0,1);
-				GL11.glVertex2f(px+100,py);
-				GL11.glTexCoord2f(0,0);
-				GL11.glVertex2f(px+100,py+100);
-				GL11.glTexCoord2f(1,0);
-				GL11.glVertex2f(px,py+100);
-	 */
-	// Looking Up
-	/*
-	 * GL11.glBegin(GL11.GL_QUADS); // 0,0 x,y 1x x + widht 1y y + height // 
-				GL11.glTexCoord2f(0,0);
-				GL11.glVertex2f(px,py);
-				GL11.glTexCoord2f(1,0);
-				GL11.glVertex2f(px+100,py);
-				GL11.glTexCoord2f(1,1);
-				GL11.glVertex2f(px+100,py+100);
-				GL11.glTexCoord2f(0,1);
-				GL11.glVertex2f(px,py+100);
-	 */
 }
