@@ -50,7 +50,11 @@ public class EndDoor {
 	
 	public void changeTextures() {
 		unbind();
-		ttu = openD;
+		if(k.isNotTaken() != true) {
+			ttu = openD;
+		} else {
+			ttu = closeD;
+		}
 	}
 	
 	public void draw(int px, int py) {
