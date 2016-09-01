@@ -219,6 +219,7 @@ public class Level2 implements Levels {
 		p.setPY(425);
 		p.setLiving(true);
 		door.setKeyTaken(true);
+		door.changeTextures();
 	}
 
 	public void pauseMenu() {
