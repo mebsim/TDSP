@@ -70,7 +70,7 @@ public class LoadTextures {
 	}
 	
 	public Texture getPlayer() {
-		Texture Player = getTexture("PlayerIcon");
+		Texture Player = getTexture("PlayerSprite");
 		return Player;
 	}
 	
