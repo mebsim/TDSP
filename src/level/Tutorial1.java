@@ -240,6 +240,7 @@ public class Tutorial1 implements Levels {
 		p.setPY(200);
 		p.setLiving(true);
 		door.setKeyTaken(true);
+		door.changeTextures();
 	}
 
 	public void pauseMenu() {
