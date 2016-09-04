@@ -19,13 +19,9 @@ public class Plain {
 		this.fontSize = fontSize;
 	}
 	
-	public void setUp() {
-		// We don't need anything here for a box
-	}
+	public void setUp() {}
 	
-	public void destroy() {
-		// We don't need anything here for a box
-	}
+	public void destroy() {}
 	
 	public void draw(Color color) {
 		TrueTypeFont font;
