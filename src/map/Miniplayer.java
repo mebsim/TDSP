@@ -21,14 +21,14 @@ public class Miniplayer {
 	public void draw() {
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, redot.getTextureID());
 		GL11.glBegin(GL11.GL_QUADS);
-			GL11.glTexCoord2f(0,0);
-			GL11.glVertex2f(px,py);
-			GL11.glTexCoord2f(1,0);
-			GL11.glVertex2f(px+redot.getImageWidth(),py);
-			GL11.glTexCoord2f(1,1);
-			GL11.glVertex2f(px+redot.getImageWidth(),py+redot.getImageHeight());
-			GL11.glTexCoord2f(0,1);
-			GL11.glVertex2f(px,py+redot.getImageHeight());
+			GL11.glTexCoord2d(0,0);
+			GL11.glVertex2d(px,py);
+			GL11.glTexCoord2d(1,0);
+			GL11.glVertex2d(px+redot.getImageWidth()/2,py);
+			GL11.glTexCoord2d(1,1);
+			GL11.glVertex2d(px+redot.getImageWidth()/2,py+redot.getImageHeight()/2);
+			GL11.glTexCoord2d(0,1);
+			GL11.glVertex2d(px,py+redot.getImageHeight()/2);
 		GL11.glEnd();
 	}
 	
