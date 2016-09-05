@@ -27,48 +27,6 @@ public class LoadTextures {
 		return texture;
 	}
 	
-	/*Texture Player = getTexture("PlayerIcon");
-	Texture Silver = getTexture("silver");
-	Texture Map6 = getTexture("map6");
-	Texture Key = getTexture("Key");
-	Texture DoorO = getTexture("DoorO");
-	Texture DoorC = getTexture("DoorC");*/
-	//Texture Enemy = getTexture("EnemyIcon1");
-	//Texture Map1 = getTexture("Map1");
-
-	public Texture getSprite0() {
-		Texture psprite = getTexture("sprite_0");
-		return psprite;
-	}
-	public Texture getSprite1() {
-		Texture psprite = getTexture("sprite_1");
-		return psprite;
-	}
-	public Texture getSprite2() {
-		Texture psprite = getTexture("sprite_2");
-		return psprite;
-	}
-	public Texture getSprite3() {
-		Texture psprite = getTexture("sprite_3");
-		return psprite;
-	}
-	public Texture getSprite4() {
-		Texture psprite = getTexture("sprite_4");
-		return psprite;
-	}
-	public Texture getSprite5() {
-		Texture psprite = getTexture("sprite_5");
-		return psprite;
-	}
-	public Texture getSprite6() {
-		Texture psprite = getTexture("sprite_6");
-		return psprite;
-	}
-	public Texture getSprite7() {
-		Texture psprite = getTexture("sprite_7");
-		return psprite;
-	}
-	
 	public Texture getPlayer() {
 		Texture Player = getTexture("PlayerSprite");
 		return Player;
