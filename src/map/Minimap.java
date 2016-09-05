@@ -38,8 +38,8 @@ public class Minimap {
 	}
 	
 	public void setMiniPlayerPosition(int px, int py, int nmx, int nmy) {
-		mp.setPx((px/8) - (nmx/8));
-		mp.setPy((py/8) - (nmy/8));
+		mp.setPx((px/8) - (nmx/8) + 3);
+		mp.setPy((py/8) - (nmy/8) + 2);
 	}
 	
 }
