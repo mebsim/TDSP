@@ -93,16 +93,6 @@ public class Player {
 	public void draw() {
 		if(living) {
 			GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getTextureID());
-			/*GL11.glBegin(GL11.GL_QUADS);
-				GL11.glTexCoord2f(0,0);
-				GL11.glVertex2f(px,py);
-				GL11.glTexCoord2f(0.8f,0);
-				GL11.glVertex2f(px+100,py);
-				GL11.glTexCoord2f(0.8f,0.8f);
-				GL11.glVertex2f(px+100,py+100);
-				GL11.glTexCoord2f(0,0.8f);
-				GL11.glVertex2f(px,py+100);
-			GL11.glEnd();*/
 			GL11.glBegin(GL11.GL_QUADS); // 0,0 x,y 1x x + widht 1y y + height // 
 				GL11.glTexCoord2f(tx1,ty1);
 				GL11.glVertex2f(px,py);
@@ -113,8 +103,6 @@ public class Player {
 				GL11.glTexCoord2f(tx4,ty4);
 				GL11.glVertex2f(px,py+100);
 			GL11.glEnd();
-			//System.out.println("COUNTER: " + counter);
-			//System.out.println(countertu);
 			movement();
 			// Checks if it is centered
 			if(px >= Display.getWidth()/2 - 70 && px <= Display.getWidth()/2 - 60) {
@@ -190,6 +178,14 @@ public class Player {
 				counter += 0.5;
 			} else {
 				counter = 0;
+				tx1 = 0;
+				tx2 = 0;
+				tx3 = 0.125f;
+				tx4 = 0.125f;
+				ty1 = 1;
+				ty2 = 0;
+				ty3 = 0;
+				ty4 = 1;
 			}
 		}
 	}
@@ -204,18 +200,6 @@ public class Player {
 		} else if(kb.isSdown() && !kb.isAdown() && !kb.isDdown() && !kb.isWdown() && scool == false && (my <= (Display.getHeight() - MapHeight) || (my == 0 && py <= Display.getHeight()/2 - 64)) && py < Display.getHeight() - 90) {
 			py +=vs;
 		}
-		/*if(kb.isAdown() && px > 0) {
-			px -= hs;
-		} else if(kb.isDdown() && px + 100 < 800) {
-			px += hs;
-		} else if(kb.isWdown() && py > 0) {
-			py -= vs;
-		} else if(kb.isSdown() && py + 100 < 600) {
-			py += vs;
-		} else {
-			py += 0;
-			px += 0;
-		}*/
 	}
 	
 	public void destroy() {
