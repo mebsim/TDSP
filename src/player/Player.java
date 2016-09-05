@@ -21,7 +21,7 @@ public class Player {
 	int MapWidth;
 	int MapHeight;
 	
-	// Player textures for waking
+	// Player texture for waking
 	Texture texture;
 	
 	int hs = 5; // horizontal speed
@@ -30,12 +30,15 @@ public class Player {
 	// The positions of each corner of the texture
 	float tx1 = 0;
 	float tx2 = 0;
-	float tx3 = 1;
-	float tx4 = 1;
+	float tx3 = 0.125f;
+	float tx4 = 0.125f;
 	float ty1 = 1;
 	float ty2 = 0;
 	float ty3 = 0;
 	float ty4 = 1;
+	
+	float tx = 0;
+	float ty = 0;
 	
 	// Collisons booleans
 	boolean ncool = false;
@@ -114,40 +117,40 @@ public class Player {
 				counter = 0;
 			}
 			if(kb.isAdown() && !kb.isDdown() && !kb.isWdown() && !kb.isSdown() && wcool == false) {
-				tx1 = 1;
-				tx2 = 1;
-				tx3 = 0;
-				tx4 = 0;
+				tx1 = (float) (0.125f * Math.ceil(counter));
+				tx2 = (float) (0.125f * Math.ceil(counter));
+				tx3 = (float) (0.125f * Math.ceil(counter)) - 0.125f;
+				tx4 = (float) (0.125f * Math.ceil(counter)) - 0.125f;
 				ty1 = 0;
 				ty2 = 1;
 				ty3 = 1;
 				ty4 = 0;
 				counter += 0.5;
 			} else if(kb.isDdown() && !kb.isAdown() && !kb.isWdown() && !kb.isSdown() && ecool == false) {
-				tx1 = 0;
-				tx2 = 0;
-				tx3 = 1;
-				tx4 = 1;
+				tx1 = (float) (0.125f * Math.ceil(counter)) - 0.125f;
+				tx2 = (float) (0.125f * Math.ceil(counter)) - 0.125f;
+				tx3 = (float) (0.125f * Math.ceil(counter));
+				tx4 = (float) (0.125f * Math.ceil(counter));
 				ty1 = 1;
 				ty2 = 0;
 				ty3 = 0;
 				ty4 = 1;
 				counter += 0.5;
 			} else if(kb.isWdown() && !kb.isAdown() && !kb.isDdown() && !kb.isSdown() && ncool == false) {
-				tx1 = 0;
-				tx2 = 1;
-				tx3 = 1;
-				tx4 = 0;
+				tx1 = (float) (0.125f * Math.ceil(counter)) - 0.125f;
+				tx2 = (float) (0.125f * Math.ceil(counter));
+				tx3 = (float) (0.125f * Math.ceil(counter));
+				tx4 = (float) (0.125f * Math.ceil(counter)) - 0.125f;
 				ty1 = 0;
 				ty2 = 0;
 				ty3 = 1;
 				ty4 = 1;
 				counter += 0.5;
 			} else if(kb.isSdown() && !kb.isAdown() && !kb.isDdown() && !kb.isWdown() && scool == false) {
-				tx1 = 1;
-				tx2 = 0;
-				tx3 = 0;
-				tx4 = 1;
+				tx1 = (float) (0.125f * Math.ceil(counter));
+				tx2 = (float) (0.125f * Math.ceil(counter)) - 0.125f;
+				tx3 = (float) (0.125f * Math.ceil(counter)) - 0.125f;
+				tx4 = (float) (0.125f * Math.ceil(counter));
 				ty1 = 1;
 				ty2 = 1;
 				ty3 = 0;
@@ -255,4 +258,53 @@ public class Player {
 	public void setLiving(boolean living) {
 		this.living = living;
 	}
+	
+	// Looking right 
+	/*
+	 * GL11.glTexCoord2f(0,1);
+				GL11.glVertex2f(px,py);
+				GL11.glTexCoord2f(0,0);
+				GL11.glVertex2f(px+100,py);
+				GL11.glTexCoord2f(1,0);
+				GL11.glVertex2f(px+100,py+100);
+				GL11.glTexCoord2f(1,1);
+				GL11.glVertex2f(px,py+100);
+	 */
+	
+	// Looking Left
+	/*
+	 * GL11.glTexCoord2f(1,0);
+				GL11.glVertex2f(px,py);
+				GL11.glTexCoord2f(1,1);
+				GL11.glVertex2f(px+100,py);
+				GL11.glTexCoord2f(0,1);
+				GL11.glVertex2f(px+100,py+100);
+				GL11.glTexCoord2f(0,0);
+				GL11.glVertex2f(px,py+100);
+	 */
+	
+	//Looking Down
+	/*
+	 * GL11.glBegin(GL11.GL_QUADS); // 0,0 x,y 1x x + widht 1y y + height // 
+				GL11.glTexCoord2f(1,1);
+				GL11.glVertex2f(px,py);
+				GL11.glTexCoord2f(0,1);
+				GL11.glVertex2f(px+100,py);
+				GL11.glTexCoord2f(0,0);
+				GL11.glVertex2f(px+100,py+100);
+				GL11.glTexCoord2f(1,0);
+				GL11.glVertex2f(px,py+100);
+	 */
+	// Looking Up
+	/*
+	 * GL11.glBegin(GL11.GL_QUADS); // 0,0 x,y 1x x + widht 1y y + height // 
+				GL11.glTexCoord2f(0,0);
+				GL11.glVertex2f(px,py);
+				GL11.glTexCoord2f(1,0);
+				GL11.glVertex2f(px+100,py);
+				GL11.glTexCoord2f(1,1);
+				GL11.glVertex2f(px+100,py+100);
+				GL11.glTexCoord2f(0,1);
+				GL11.glVertex2f(px,py+100);
+	 */
 }
