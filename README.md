@@ -2,6 +2,7 @@
 
 Stands for Top Down Stealth Puzzle<br />
 Also called the 'Covert Exit'
+(Although sadly it is currently missing the stealth part, working on that though)
 
 Made with LWJGL (another acronym (Light Weight Java Game Library))
 
