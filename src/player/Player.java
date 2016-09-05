@@ -23,14 +23,6 @@ public class Player {
 	
 	// Player textures for waking
 	Texture texture;
-	Texture sprite0;
-	Texture sprite1;
-	Texture sprite2;
-	Texture sprite3;
-	Texture sprite4;
-	Texture sprite5;
-	Texture sprite6;
-	Texture sprite7;
 	
 	int hs = 5; // horizontal speed
 	int vs = 5; // vertical speed
@@ -78,16 +70,7 @@ public class Player {
 	}
 	
 	public void getTexture() {
-		//texture = lt.getPlayer();
-		sprite0 = lt.getSprite0();
-		sprite1 = lt.getSprite1();
-		sprite2 = lt.getSprite2();
-		sprite3 = lt.getSprite3();
-		sprite4 = lt.getSprite4();
-		sprite5 = lt.getSprite5();
-		sprite6 = lt.getSprite6();
-		sprite7 = lt.getSprite7();
-		texture = sprite0;
+		texture = lt.getPlayer();
 	}
 	
 	public void draw() {
@@ -129,24 +112,6 @@ public class Player {
 			}
 			if(counter > 7) {
 				counter = 0;
-			}
-			// Goes through all the textures
-			if(counter == 0) {
-				texture = sprite0;
-			} else if(counter == 1) {
-				texture = sprite1;
-			} else if(counter == 2) {
-				texture = sprite2;
-			} else if(counter == 3) {
-				texture = sprite3;
-			} else if(counter == 4) {
-				texture = sprite4;
-			} else if(counter == 5) {
-				texture = sprite5;
-			} else if (counter == 6) {
-				texture = sprite6;
-			} else if (counter == 7) {
-				texture = sprite7;
 			}
 			if(kb.isAdown() && !kb.isDdown() && !kb.isWdown() && !kb.isSdown() && wcool == false) {
 				tx1 = 1;
