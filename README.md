@@ -14,3 +14,7 @@ For the textures I used:
 - www.piskelapp.com
 - Along with other websites that can be found in the log.
 - Along with hours of messing around, until I got bored and said that will do.
+
+Since this is an early version, one which I will expand upon as I go on learning different and new things, some help would be nice to have.
+
+I plan on taking this and expanding it to the size of a proper game with a story. Which means I am working on the various different mechanics to use.
