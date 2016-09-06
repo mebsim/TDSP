@@ -59,6 +59,8 @@ I have currently excluded the observations, leading to the program only having t
 Today I have made the pause, lose and win menu. Other than that, I have done nothing.
 Update: I have made a really quick mini-map, but it did not work. So right now, it’s not called but you can see the code for it.
 
+All the edits after this are able to be found after on the Github page.
+
 Tutorial For SlickUtil - http://www.ninjacave.com/slickutil1. 
 
 General Tutorials for LWJGL 2 - http://wiki.lwjgl.org/wiki/Main_Page
