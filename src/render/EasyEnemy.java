@@ -75,6 +75,7 @@ public class EasyEnemy extends Enemy{
 
 	@Override
 	public void observe(int px, int py) {
+		/*
 		witw = false;
 		ft = false;
 		cx[0] = x;
@@ -186,7 +187,7 @@ public class EasyEnemy extends Enemy{
 		if(y == cy[0] && x == cx[0]) {
 			reseted = true;
 		}
-		
+		*/
 		// observing is not complete
 		// The idea is to get the enemy to go quicker when they see the player. If the player gets away, they would return to where they were before they started chassing the player
 	}
