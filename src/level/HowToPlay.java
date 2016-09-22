@@ -5,7 +5,8 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.opengl.Texture;
 
 import loaders.LoadTextures;
-import text.Plain;
+import text.Button;
+import text.CenterableText;
 import user.KB;
 import user.M;
 
@@ -14,10 +15,10 @@ public class HowToPlay implements Levels {
 	KB kb;
 	M mouse;
 	
-	Plain goBack;
-	Plain controls;
-	Plain instruct;
-	Plain pause;
+	Button goBack;
+	CenterableText controls;
+	CenterableText instruct;
+	CenterableText pause;
 	
 	int mx;
 	int my;
@@ -43,10 +44,14 @@ public class HowToPlay implements Levels {
 		getTexture();
 		kb = new KB();
 		mouse = new M();
-		pause = new Plain(275,300, "ESC - PAUSE GAME", 24);
-		goBack = new Plain(700,550,"BACK", 24);
-		controls = new Plain(275,350, "WASD -- Movement", 24);
-		instruct = new Plain(25,400, "GET THE KEY, OPEN DOOR, GO THROUGH DOOR, WIN LEVEL", 24);
+		pause = new CenterableText(300, "ESC - PAUSE GAME", 24);
+		goBack = new Button(700,550,"BACK", 24);
+		controls = new CenterableText(350, "WASD -- Movement", 24);
+		instruct = new CenterableText(400, "GET THE KEY, OPEN DOOR, GO THROUGH DOOR, WIN LEVEL", 24);
+		pause.setUp();
+		controls.setUp();
+		instruct.setUp();
+		goBack.setUp();
 	}
 
 	@Override
@@ -86,17 +91,15 @@ public class HowToPlay implements Levels {
 	}
 	
 	public void checkHover() {
-		if(mx > 700 && mx < 770 && my > 550 && my < 574) {
-			hgb = true;
+		if(goBack.checkIfHover()) {
 			cgb = Color.lightGray;
 		} else {
-			hgb = false;
 			cgb = Color.white;
 		}
 	}
 	
 	public void checkClick() {
-		if(hgb && mouse.isLeftButton()) {
+		if(goBack.checkIfClicked() && mouse.isLeftButton()) {
 			state = "titlescreen";
 		}
 	}
