@@ -6,7 +6,7 @@ import org.newdawn.slick.opengl.Texture;
 
 import loaders.LoadTextures;
 import main.WindowMaker;
-import text.Plain;
+import text.Button;
 import user.KB;
 import user.M;
 
@@ -15,9 +15,9 @@ public class TitleScreen implements Levels {
 	KB kb;
 	M mouse;
 	
-	Plain start;
-	Plain htp;
-	Plain exit;
+	Button start;
+	Button htp;
+	Button exit;
 	
 	int mx;
 	int my;
@@ -49,9 +49,15 @@ public class TitleScreen implements Levels {
 		getTexture();
 		kb = new KB();
 		mouse = new M();
-		start = new Plain(325,370,"START", 24);
-		htp = new Plain(280,400,"HOW TO PLAY", 24);
-		exit = new Plain(340,430,"EXIT", 24);
+		start = new Button(0,370,"START", 24);
+		htp = new Button(0,400,"HOW TO PLAY", 24);
+		exit = new Button(0,430,"EXIT", 24);
+		start.setUp();
+		htp.setUp();
+		exit.setUp();
+		start.center();
+		htp.center();
+		exit.center();
 	}
 
 	@Override
@@ -89,37 +95,31 @@ public class TitleScreen implements Levels {
 	}
 	
 	public void checkHover() {
-		if(mx > 325 && mx < 412 && my > 370 && my < 394) {
-			hs = true;
+		if(start.checkIfHover()) {
 			sc = Color.lightGray;
 		} else {
-			hs = false;
 			sc = Color.white;
 		}
-		if(mx > 280 && mx <  460 && my > 400 && my < 424) {
-			hh = true;
+		if(htp.checkIfHover()) {
 			hc = Color.lightGray;
 		} else {
-			hh = false;
 			hc = Color.white;
 		}
-		if(mx > 340 && mx <  397 && my > 430 && my < 454) {
-			he = true;
+		if(exit.checkIfHover()) {
 			ec = Color.lightGray;
 		} else {
-			he = false;
 			ec = Color.white;
 		}
 	}
 	
 	public void checkClick() {
-		if(hs && mouse.isLeftButton()) {
+		if(start.checkIfClicked() && mouse.isLeftButton()) {
 			state = "level1";
 		}
-		if(hh && mouse.isLeftButton()) {
+		if(htp.checkIfClicked() && mouse.isLeftButton()) {
 			state = "htp";
 		}
-		if(he && mouse.isLeftButton()) {
+		if(exit.checkIfClicked() && mouse.isLeftButton()) {
 			state = "close";
 		}
 	}
