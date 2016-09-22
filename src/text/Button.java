@@ -2,6 +2,7 @@ package text;
 
 import java.awt.Font;
 
+import org.lwjgl.opengl.Display;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.TrueTypeFont;
 
@@ -61,6 +62,10 @@ public class Button {
 		textHeight = font.getHeight(words);
 		System.out.println(textHeight);
 		font.drawString(x, y, words, color); //x, y, string to draw, color
+	}
+	
+	public void center() {
+		x = (Display.getWidth()/2) - (font.getWidth(words)/2);
 	}
 	
 }
