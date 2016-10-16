@@ -73,6 +73,12 @@ public class EasyEnemy extends Enemy{
 	int counter2; // Second counter
 	boolean reseted = true; // Is the player where it should be
 
+	public void reset(int x, int y) {
+		this.x = x;
+		this.y = y;
+		dg = 0;
+	}
+	
 	@Override
 	public void observe(int px, int py) {
 		/*
