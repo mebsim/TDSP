@@ -284,7 +284,7 @@ public class Tutorial1 implements Levels {
 			GL11.glEnd();
 			if(kb.is1Down() == true) {
 				fail = false;
-				resetLevel();
+				state = "tut1";
 			} else if(kb.is2Down() == true) {
 				fail = false;
 				state = "titlescreen";
