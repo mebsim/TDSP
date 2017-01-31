@@ -263,7 +263,7 @@ public class Level2 implements Levels {
 			GL11.glEnd();
 			if(kb.is1Down() == true) {
 				fail = false;
-				resetLevel();
+				state = "level2";
 			} else if(kb.is2Down() == true) {
 				fail = false;
 				state = "titlescreen";
